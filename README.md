@@ -1,7 +1,7 @@
 # Docker Node Nginx Pagespeed
 
 This is a docker container meant for nodejs apps delivering web content and aiming to an high page speed score.
-It includes a very simple custom build of nginx that will apply (google's page speed)[https://developers.google.com/speed/pagespeed/] goodies
+It includes a very simple custom build of nginx that will apply [google's page speed](https://developers.google.com/speed/pagespeed/) goodies
 so you don't need to do it yourself in you node code :)
 
 ## How to use it
