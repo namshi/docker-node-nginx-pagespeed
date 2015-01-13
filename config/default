@@ -1,0 +1,13 @@
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://127.0.0.1:9004$uri$is_args$args;
+
+    }
+    
+    pagespeed on;
+    pagespeed RewriteLevel PassThrough;
+    pagespeed EnableFilters remove_comments,rewrite_javascript;
+    pagespeed FileCachePath /var/pagespeed/cache;
+}
