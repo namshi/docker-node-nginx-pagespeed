@@ -27,3 +27,9 @@ RUN npm install -g clusterjs
 COPY ./config/default /etc/nginx/sites-enabled/default
 
 RUN mkdir -p /var/pagespeed/cache
+
+#cleanup
+RUN rm -fr /usr/src/*
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    find /var/log -type f | while read f; do echo -ne '' > $f; done;
