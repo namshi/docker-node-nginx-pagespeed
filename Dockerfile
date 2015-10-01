@@ -2,8 +2,8 @@ FROM node:4-slim
 
 MAINTAINER Luciano Colosio "luciano.colosio@namshi.com"
 
-ENV NGINX_VERSION 1.7.9
-ENV NPS_VERSION 1.9.32.3
+ENV NGINX_VERSION 1.9.4
+ENV NPS_VERSION 1.9.32.6
 
 RUN apt-get update && apt-get install -y \
       python \
@@ -39,9 +39,3 @@ RUN apt-get update && apt-get install -y \
         find /var/log -type f | while read f; do echo -ne '' > $f; done;
 
 COPY ./config/default /etc/nginx/sites-enabled/default
-
-#cleanup
-# RUN apt-get remove -y build-essential zlib1g-dev python-dev libpcre3-dev unzip wget
-# RUN apt-get clean && \
-#     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-#     find /var/log -type f | while read f; do echo -ne '' > $f; done;
