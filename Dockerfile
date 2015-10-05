@@ -1,4 +1,4 @@
-FROM node:4-slim
+FROM node:0.12-slim
 
 MAINTAINER Luciano Colosio "luciano.colosio@namshi.com"
 
