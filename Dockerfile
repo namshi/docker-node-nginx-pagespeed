@@ -1,4 +1,4 @@
-FROM node:0.12-slim
+FROM node:0.12
 
 MAINTAINER Luciano Colosio "luciano.colosio@namshi.com"
 
@@ -32,6 +32,9 @@ RUN apt-get update && apt-get install -y \
             --sbin-path=/usr/local/sbin --error-log-path=/var/log/nginx/error.log && \
             make && make install && \
       cd /usr && \
+      cat /etc/nginx/nginx.conf | sed s/"ssl_"/"#ssl_"/ > /tmp/nginx.conf && \
+      cat /tmp/nginx.conf > /etc/nginx/nginx.conf && \
+      rm /tmp/nginx.conf && \
       rm -fr /usr/src/* && \
       mkdir -p /var/pagespeed/cache && \
       apt-get clean && \
@@ -39,3 +42,5 @@ RUN apt-get update && apt-get install -y \
         find /var/log -type f | while read f; do echo -ne '' > $f; done;
 
 COPY ./config/default /etc/nginx/sites-enabled/default
+
+CMD []
